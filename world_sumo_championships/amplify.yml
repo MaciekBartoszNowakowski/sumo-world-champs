@@ -1,0 +1,22 @@
+version: 1
+applications:
+  - appRoot: "/"
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm install -g expo-cli
+            - npm install
+        build:
+          commands:
+            - expo build:android
+            - build:ios
+      artifacts:
+        baseDirectory: android/app/build/outputs/apk/release/
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - node_modules/**/*
+    appId: "your-app-id"
+    environment: "prod"
